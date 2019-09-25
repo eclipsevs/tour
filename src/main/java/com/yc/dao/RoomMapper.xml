@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.RoomMapper">
+  <resultMap id="BaseResultMap" type="com.yc.po.Room">
+    <id column="rid" jdbcType="INTEGER" property="rid" />
+    <result column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="rprice" jdbcType="DECIMAL" property="rprice" />
+    <result column="rstatus" jdbcType="INTEGER" property="rstatus" />
+    <result column="rtype" jdbcType="VARCHAR" property="rtype" />
+    <result column="rdesc" jdbcType="VARCHAR" property="rdesc" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.SceneryMapper">
+  <resultMap id="BaseResultMap" type="com.yc.po.Scenery">
+    <id column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="sname" jdbcType="VARCHAR" property="sname" />
+    <result column="sdesc" jdbcType="VARCHAR" property="sdesc" />
+    <result column="sprice" jdbcType="DECIMAL" property="sprice" />
+    <result column="stel" jdbcType="VARCHAR" property="stel" />
+    <result column="saddr" jdbcType="VARCHAR" property="saddr" />
+    <result column="sstars" jdbcType="VARCHAR" property="sstars" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.OrderMapper">
+  <resultMap id="resultMap01" type="com.yc.po.Order">
+    <id column="oid" property="oid" />
+    <result column="name"  property="hotel.name"/>
+    <result column="oprice"  property="oprice"/>
+    <result column="pic" property="hotel.pic"/>
+    <result column="oid" property="oid"/>
+
+  </resultMap>
+
+    <!-- 查询全部 -->
+    <select id="findAll" resultMap="resultMap01">
+      select oid, hotel.name, `order`.oprice,hotel.pic from hotel,`order` where `order`.sid=hotel.id and ostatus=#{ostatus} and uid=#{uid}
+    </select>
+
+  <!-- 订单状态更新为已支付 -->
+    <update id="updateStatus" parameterType="java.util.List">
+      update `order` set ostatus=2 where oid in
+      <foreach collection="list" item="Order" open="(" separator="," close=")">
+        #{Order.oid}
+      </foreach>
+    </update>
+
+  <delete id="delete" parameterType="com.yc.po.Order">
+    delete from `order` where oid = #{oid}
+  </delete>
+</mapper>

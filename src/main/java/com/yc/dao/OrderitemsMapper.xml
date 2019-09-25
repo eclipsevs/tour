@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.OrderitemsMapper">
+  <resultMap id="BaseResultMap" type="com.yc.po.Orderitems">
+    <id column="otid" jdbcType="INTEGER" property="otid" />
+    <result column="oid" jdbcType="INTEGER" property="oid" />
+    <result column="otcid" jdbcType="INTEGER" property="otcid" />
+  </resultMap>
+
+  <insert id="insert" parameterType="java.util.List">
+    insert into orderitems (otid, oid, otcid) values
+    <foreach collection="list" item="Orderitem" separator=",">
+      (null, #{Orderitem.oid}, #{Orderitem.otcid})
+    </foreach>
+  </insert>
+</mapper>

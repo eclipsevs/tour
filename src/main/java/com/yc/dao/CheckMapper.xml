@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.dao.CheckMapper">
+  <resultMap id="BaseResultMap" type="com.yc.po.Check">
+    <id column="uname" jdbcType="VARCHAR" property="uname" />
+    <result column="lefttime" jdbcType="VARCHAR" property="lefttime" />
+    <result column="uidcard" jdbcType="VARCHAR" property="uidcard" />
+    <result column="hid" jdbcType="INTEGER" property="hid" />
+    <result column="intime" jdbcType="TIMESTAMP" property="intime" />
+  </resultMap>
+</mapper>
