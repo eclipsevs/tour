@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yc.dao.HotelMapper">
-  <resultMap id="BaseResultMap" type="com.yc.po.Hotel">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="hid" jdbcType="VARCHAR" property="hid" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="price" jdbcType="DECIMAL" property="price" />
-    <result column="city" jdbcType="VARCHAR" property="city" />
-    <result column="xpath" jdbcType="VARCHAR" property="xpath" />
-    <result column="ypath" jdbcType="VARCHAR" property="ypath" />
-    <result column="pic" jdbcType="VARCHAR" property="pic" />
-    <result column="addr" jdbcType="VARCHAR" property="addr" />
-    <result column="score" jdbcType="VARCHAR" property="score" />
-    <result column="start" jdbcType="VARCHAR" property="start" />
-  </resultMap>
+  <!--  public List<Hotel> finds();-->
+  <select id="finds" resultType="Hotel">
+	 select id,hid,name,price,city,xpath,ypath,pic,addr,score,start from hotel h1 where 4> (select count(id) from hotel h2 where h2.id>h1.id)
+	  order by h1.start desc
+	</select>
+
+  <!-- public List<Hotel> findAll();-->
+  <select id="findAll" resultType="Hotel">
+		select id,hid,name,price,city,xpath,ypath,pic,addr,score,start from hotel h1 where 6> (select count(id) from hotel h2 where h2.id>h1.id)
+	  order by h1.start desc
+	</select>
+
+  <select id="findByStart" resultType="Hotel">
+		select id,hid,name,price,city,xpath,ypath,pic,addr,score,start from hotel where start=#{start} order by id desc
+	</select>
+
+
 </mapper>

@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
-
 /**
  * @author wk
  * @date 2019/9/25  19:51
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class TypeImpl implements Type {
 
     @Autowired
-    RedisTemplate<String, String> redisTemplate = new RedisTemplate();
+    RedisTemplate redisTemplate = new RedisTemplate();
 
     /**
      * 通过某个key获取值
