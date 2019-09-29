@@ -583,10 +583,24 @@
 		}
 	}
 	var pageNum=0;
-	var str='';
+	var  star =document.getElementById("star").value;
+	function prePage() {
+		if (pageNum<1){
+
+		}else {
+			pageNum = pageNum-1;
+			findstar();
+		}
+	}
+
+	function nextPage() {
+		pageNum = pageNum+1;
+		findstar();
+	}
+
 	function findstar() {
-		var  star =document.getElementById("star").value;
-		$.get('hotel/findByStar', {start:star, pageNum:1}, function (data) {
+		var str='';
+		$.get('hotel/findByStar', {start:star, pageNum:pageNum}, function (data) {
 
 			for (var i = 0; i < data.length; i++) {
 				var icon_star='';
@@ -605,7 +619,7 @@
 						'<li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>'+data[i].score+'</strong></div></li></ul></div></div>';
 			}
 
-			$(' .container #row').html('').append(str+'<a onclick=\"prePage()\">上一页</a><a onclick=\"nextPage()\">下一页</a>');
+			$(' .container #row').html('').append(str+'<button onclick=\"prePage()\">上一页</button><button onclick=\"nextPage()\">下一页</button>');
 		});
 		// // function showPage(obj) {
 		// 	$.get('hotel/totalPage', {start:star}, function (obj) {
