@@ -11,6 +11,14 @@ import java.util.List;
 public interface OrderMapper {
 
     /**
+     * 根据酒店id和用户id加入购物车
+     * @param id
+     * @param uid
+     * @return
+     */
+    public int add(@Param("id") Integer id,@Param("uid")Integer uid, @Param("oprice")Double oprice);
+
+    /**
      * 查看全部待付款订单
      * @param ostatus 状态码
      * @param uid  用户id

@@ -1,7 +1,6 @@
 package com.yc.po;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 /**
  * @author Administrator
@@ -14,7 +13,7 @@ public class Hotel implements Serializable {
 
     private String name;
 
-    private BigDecimal price;
+    private Double price;
 
     private String city;
 
@@ -54,11 +53,11 @@ public class Hotel implements Serializable {
         this.name = name;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

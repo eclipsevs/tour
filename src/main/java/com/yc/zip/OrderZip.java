@@ -30,4 +30,13 @@ public interface OrderZip {
      * @return
      */
     public int delete(Integer oid);
+
+    /**
+     * 根据酒店id和用户id插入订单
+     * @param id 酒店id
+     * @param uid  用户id
+     * @param oprice   单价
+     * @return
+     */
+    public int add(Integer id, Integer uid, Double oprice);
 }

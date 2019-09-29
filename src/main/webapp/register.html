@@ -43,22 +43,22 @@
 			<form autocomplete="off">
 				<div class="form-group">
 					<label>姓名</label>
-					<input class="form-control" type="text">
+					<input class="form-control name" type="text" onblur="findByName()">
 					<i class="ti-user"></i>
 				</div>
 				<div class="form-group">
 					<label>身份证号码</label>
-					<input class="form-control" type="text">
+					<input class="form-control idcard" type="text" onblur="findByIdcard()">
 					<i class="ti-user"></i>
 				</div>
 				<div class="form-group">
-					<label>邮箱</label>
-					<input class="form-control" type="email">
+					<label>手机号码</label>
+					<input class="form-control tel" type="text" onblur="findByTel()">
 					<i class="icon_mail_alt"></i>
 				</div>
 				<div class="form-group">
 					<label>密码</label>
-					<input class="form-control" type="password" id="password1">
+					<input class="form-control pwd" type="password" id="password1">
 					<i class="icon_lock_alt"></i>
 				</div>
 				<div class="form-group">
@@ -67,7 +67,7 @@
 					<i class="icon_lock_alt"></i>
 				</div>
 				<div id="pass-info" class="clearfix"></div>
-				<a href="#0" class="btn_1 rounded full-width add_top_30">Register Now!</a>
+				<a href="#0" class="btn_1 rounded full-width add_top_30" onclick="register()">Register Now!</a>
 				<div class="text-center add_top_10">Already have an acccount? <strong><a href="login.html">Sign In</a></strong></div>
 			</form>
 			<div class="copy">© 2018 Panagea</div>
@@ -83,6 +83,31 @@
 	
 	<!-- SPECIFIC SCRIPTS -->
 	<script src="js/pw_strenght.js"></script>
+
+	<script type="text/javascript">
+		function register() {
+			var uname = $('.name').val();
+			var idcard = $('.idcard').val();
+			var pwd = $('.pwd').val();
+			var tel = $('.tel').val();
+			console.log(uname+'---'+idcard+'---'+pwd+'---'+tel);
+			$.post("user/add", {uname:uname, uidcard:idcard, upwd:pwd, utel:tel}, function (data) {
+				if (data<0){
+					alert("添加失败");
+				}else {
+					alert("添加成功")
+					window.location.href="login.html";
+				}
+
+			});
+		}
+
+		//查看当前姓名是否被注册
+		function findByName() {
+			var uname = $('.name').val();
+
+		}
+	</script>
 	
 	
   

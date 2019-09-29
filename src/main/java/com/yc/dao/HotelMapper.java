@@ -19,4 +19,11 @@ public interface HotelMapper {
      */
     public List<Hotel> findAll();
 
+    /**
+     * 根据酒店id查看酒店详情
+     * @param id 酒店id
+     * @return
+     */
+    public Hotel findById(Integer id);
+
 }

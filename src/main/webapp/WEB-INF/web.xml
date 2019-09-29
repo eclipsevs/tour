@@ -11,6 +11,13 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:spring-bean.xml</param-value>
   </context-param>
+  <context-param>
+    <param-name>jedisPoolConfig</param-name>
+    <param-value>classpath:spring-redis.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>redis.clients.jedis.JedisPoolConfig</listener-class>
+  </listener>
   <!--配置ioc容器的加载监听器-->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

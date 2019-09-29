@@ -17,7 +17,7 @@ public class Order implements Serializable {
 
     private Integer ostatus;
 
-    private double oprice;
+    private Double oprice;
 
     private Date otime;
 

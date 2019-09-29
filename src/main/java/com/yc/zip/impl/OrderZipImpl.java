@@ -33,4 +33,16 @@ public class OrderZipImpl implements OrderZip {
     public int delete(Integer oid) {
         return orderMapper.delete(oid);
     }
+
+    /**
+     * 插入订单
+     * @param id 酒店id
+     * @param uid  用户id
+     * @param oprice 单价
+     * @return
+     */
+    @Override
+    public int add(Integer id, Integer uid, Double oprice) {
+        return orderMapper.add(id, uid, oprice);
+    }
 }

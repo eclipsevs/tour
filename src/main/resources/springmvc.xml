@@ -44,7 +44,7 @@
     <!--拦截器-->
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/back/page/**"/>
+            <mvc:mapping path="/order/**"/>
             <bean class="com.yc.interceptor.BackForwardInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>

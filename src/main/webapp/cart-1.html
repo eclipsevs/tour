@@ -38,6 +38,9 @@
 			id='';
 			$.post("order/findAll",{ostatus:1,uid:2},function (data) {
 				console.log(data);
+				if (data==false){
+					window.location.href="login.html";
+				}
 				if (data == null) {
 					console.log("当前购物车为空");
 					alert("当前购物车为空");

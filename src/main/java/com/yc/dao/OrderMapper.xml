@@ -12,7 +12,7 @@
 
     <!-- 查询全部 -->
     <select id="findAll" resultMap="resultMap01">
-      select oid, hotel.name, `order`.oprice,hotel.pic from hotel,`order` where `order`.sid=hotel.id and ostatus=#{ostatus} and uid=#{uid}
+      select oid, hotel.name, `order`.oprice,hotel.pic from hotel,`order` where `order`.ocid=hotel.id and ostatus=#{ostatus} and uid=#{uid}
     </select>
 
   <!-- 订单状态更新为已支付 -->
@@ -23,7 +23,13 @@
       </foreach>
     </update>
 
+  <!-- 根据id删除订单 -->
   <delete id="delete" parameterType="com.yc.po.Order">
     delete from `order` where oid = #{oid}
   </delete>
+
+  <!-- 根据酒店id和用户id加入购物车订单 -->
+  <insert id="add" parameterType="Order">
+    insert into `order` values (null,#{id},#{uid},1,#{oprice},now(),1,null,null,null)
+  </insert>
 </mapper>

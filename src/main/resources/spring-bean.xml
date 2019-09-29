@@ -76,9 +76,16 @@
         <property name="poolConfig" ref="poolConfig"/>
     </bean>
 
+
     <!-- RedisTempLate -->
     <bean class="org.springframework.data.redis.core.RedisTemplate">
         <property name="connectionFactory" ref="jedisConnectionFactory"/>
+        <property name="keySerializer">
+            <bean  class="com.yc.util.StringRedisSerializer" />
+        </property>
+        <property name="valueSerializer">
+            <bean class="com.yc.util.StringRedisSerializer" />
+        </property>
     </bean>
 
 </beans>

@@ -17,5 +17,9 @@
 		select id,hid,name,price,city,xpath,ypath,pic,addr,score,start from hotel where start=#{start} order by id desc
 	</select>
 
+        <select id="findById" parameterType="Hotel" resultType="Hotel">
+		select id,hid,name,price,city,xpath,ypath,pic,addr,score,start from hotel where id = #{id}
+	</select>
+
 
 </mapper>
