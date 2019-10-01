@@ -1,7 +1,10 @@
 package com.yc.zip;
 
+import com.yc.po.Hotel;
 import com.yc.po.Order;
+import org.apache.ibatis.annotations.Param;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -12,20 +15,24 @@ public interface OrderZip {
 
     /**
      * 查看全部待付款订单
+     *
+     * @param request
      * @param ostatus 状态码
      * @return
      */
-    public List<Object> findAll(Integer ostatus, Integer uid);
+    public List<Object> findAll(HttpServletRequest request, Integer ostatus);
 
     /**
      * 修改支付完成的订单状态
-     * @param list 包含要修改的订单号和用户编号
+     *
+     * @param id 包含要修改的订单号和用户编号
      * @return
      */
-    public int updateStatus(List<Order> list);
+    public int updateStatus(String id);
 
     /**
      * 根据id删除订单
+     *
      * @param oid 订单号
      * @return
      */
@@ -33,10 +40,30 @@ public interface OrderZip {
 
     /**
      * 根据酒店id和用户id插入订单
-     * @param id 酒店id
-     * @param uid  用户id
-     * @param oprice   单价
+     *
+     * @param request
+     * @param id     酒店id
      * @return
      */
-    public int add(Integer id, Integer uid, Double oprice);
+    public int add(HttpServletRequest request, Integer id);
+
+    /**
+     * 根据商品号，用户编号和状态号查询购物车中是否有未支付的该商品号的商品，
+     * 来判断是插入新数据还是更新数据的数量
+     *
+     * @param ocid 商品号
+     * @param uid 用户编号
+     * @param ostatus 状态号
+     * @return
+     */
+    Hotel findByIdAndUid( Integer ocid, Integer uid, Integer ostatus );
+
+    /**
+     * 更新订单的商品数量
+     *
+     * @param id 订单号
+     * @param num 修改数量
+     * @return
+     */
+    int updateNum(Integer id, Integer num);
 }

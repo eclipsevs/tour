@@ -12,7 +12,7 @@
     <context:component-scan base-package="com.yc">
     </context:component-scan>
     <!--导入外部文件-->
-    <context:property-placeholder location="classpath:db.properties"/>
+    <context:property-placeholder location="classpath:*.properties"/>
     <!--配置c3p0数据源-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="user" value="${user}"/>
@@ -43,7 +43,8 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
     <!--配置事务管理-->
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
     <!--启用事务注解-->
@@ -56,9 +57,9 @@
     <!-- redis数据源  -->
     <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <!-- 最大空闲数 -->
-        <property name="maxIdle" value="${redis.maxIdle}" />
+        <property name="maxIdle" value="${redis.maxIdle}"/>
         <!-- 最大连接数 -->
-        <property name="maxTotal" value="${redis.maxTotal}" />
+        <property name="maxTotal" value="${redis.maxTotal}"/>
         <!-- 最大等待时间 -->
         <property name="maxWaitMillis" value="${redis.maxWaitMillis}"/>
         <!-- 连接超时时是否阻塞，false时报异常，true阻塞到直到超时，默认true -->
@@ -67,7 +68,8 @@
         <property name="testOnBorrow" value="${redis.testOnBorrow}"/>
     </bean>
     <!-- Spring整合Jedis -->
-    <bean  id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+    <bean id="jedisConnectionFactory"
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
         <!-- 指定连接地址 -->
         <property name="hostName" value="127.0.0.1"/>
         <!-- 指定端口号 -->
@@ -80,12 +82,12 @@
     <!-- RedisTempLate -->
     <bean class="org.springframework.data.redis.core.RedisTemplate">
         <property name="connectionFactory" ref="jedisConnectionFactory"/>
-        <property name="keySerializer">
-            <bean  class="com.yc.util.StringRedisSerializer" />
-        </property>
-        <property name="valueSerializer">
-            <bean class="com.yc.util.StringRedisSerializer" />
-        </property>
+        <!--   <property name="keySerializer">
+              <bean  class="com.yc.util.StringRedisSerializer" />
+          </property>
+          <property name="valueSerializer">
+              <bean class="com.yc.util.StringRedisSerializer" />
+          </property> -->
     </bean>
 
 </beans>

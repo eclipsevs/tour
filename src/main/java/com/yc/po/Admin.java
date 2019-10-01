@@ -26,7 +26,7 @@ public class Admin implements Serializable {
     }
 
     public void setAname(String aname) {
-        this.aname = aname ;
+        this.aname = aname;
     }
 
     public String getApwd() {

@@ -4,13 +4,14 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:http="http://www.springframework.org/schema/c"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:http="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd"
-        >
+>
     <!--配置自动扫描包-->
     <context:component-scan base-package="com.yc.controller">
 
@@ -44,13 +45,15 @@
     <!--拦截器-->
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/order/**"/>
+            <mvc:mapping path="/order/findAll"/>
+            <mvc:mapping path="/order/add"/>
             <bean class="com.yc.interceptor.BackForwardInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
     <!--文件上传控制类-->
-    <bean id="commonsMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <bean id="commonsMultipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding" value="UTF-8"/>
         <property name="maxUploadSize" value="100000"/>
     </bean>

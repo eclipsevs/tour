@@ -17,16 +17,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * @author wk
+ */
 @Controller
 @RequestMapping("/ali")
 public class AliPayOut{
-
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 8640834714652684896L;
-
 	@RequestMapping("/out")
 	protected int doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	//获得初始化的AlipayClient

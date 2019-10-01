@@ -16,12 +16,12 @@ public class BackForwardInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest,
                              HttpServletResponse httpServletResponse, Object o) throws Exception {
         String path = httpServletRequest.getServletPath();
-        path = path.substring(path.lastIndexOf("/"));
+        path = path.substring(path.lastIndexOf("ded")+1);
         HttpSession session = httpServletRequest.getSession();
-        Integer uid = (Integer) session.getAttribute("user");
-        System.out.println(uid);
+        session.setAttribute("path",path);
+        Integer uid =  (Integer)session.getAttribute("user");
         //内部转发
-        if (uid != null) {
+        if (uid != null ) {
             return true;
         }
         return false;

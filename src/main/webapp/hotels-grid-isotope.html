@@ -550,6 +550,7 @@
 	  $('.isotope-wrapper').isotope({ filter: selector });
 	});
 
+
 	$(function () {
 		findAll();
 
@@ -560,20 +561,18 @@
 			showAll(data);
 		},'json');
 		var str='';
-
 		function showAll(arr) {
-
 			for (var i = 0; i < arr.length; i++) {
 				var icon_star='';
 				for (var j = 0; j < arr[i].start; j++) {
 					icon_star+='<i class="icon_star"></i>';
 				}
 				str+='<div class="col-xl-4 col-lg-6 col-md-6 isotope-item popular"><div class="box_grid"><figure>'+
-						'<a href="#0" class="wish_bt"></a><a href="hotel-detail.html">'+
+						'<a href="#0" class="wish_bt"></a><a href="hotel-detail.html#id='+arr[i].id+'">'+
 						'<img src="'+arr[i].pic+'" class="img-fluid" alt="" width="800" height="400">' +
 						'<div class="read_more"><span>Read more</span></div></a><small>BeiJing Centre</small></figure><div class="wrapper">' +
 						'<div class="cat_star">'+icon_star+'</div>'+
-						'<h3><a href="hotel-detail.html">'+arr[i].name+'</a></h3>' +
+						'<h3><a href="hotel-detail.html#id='+arr[i].id+'">'+arr[i].name+'</a></h3>' +
 						'<p>'+arr[i].addr+'</p>' +
 						'<span class="price">起价 <strong>￥'+arr[i].price+'</strong> /位</span></div><ul>'+
 						'<li><i class="ti-eye"></i>    &nbsp;164 views</li>' +
@@ -582,56 +581,54 @@
 			$(' .container #row').html(str);
 		}
 	}
-	var pageNum=0;
-	var  star =document.getElementById("star").value;
-	function prePage() {
-		if (pageNum<1){
-
+	var pageNum=1;
+	var star1;
+	function devPage() {
+		if (pageNum>0){
+			pageNum -= pageNum;
 		}else {
-			pageNum = pageNum-1;
-			findstar();
+			pageNum = pageNum;
 		}
-	}
-
-	function nextPage() {
-		pageNum = pageNum+1;
 		findstar();
 	}
-
+	function addPage() {
+		pageNum+=pageNum;
+		findstar();
+	}
 	function findstar() {
+		star =document.getElementById("star").value;
+		if (star1 !== star){
+		    pageNum = 1;
+        }
+		star1 = star;
 		var str='';
-		$.get('hotel/findByStar', {start:star, pageNum:pageNum}, function (data) {
-
+		$.get('hotel/findByStar', {start:star,pageNum:pageNum}, function (data) {
+            console.log(data);
+            console.log(pageNum);
 			for (var i = 0; i < data.length; i++) {
 				var icon_star='';
 				for (var j = 0; j < data[i].start; j++) {
 					icon_star+='<i class="icon_star"></i>';
 				}
 				str+='<div class="col-xl-4 col-lg-6 col-md-6 isotope-item popular"><div class="box_grid"><figure>'+
-						'<a href="#0" class="wish_bt"></a><a href="hotel-detail.html">'+
+						'<a href="#0" class="wish_bt"></a><a href="hotel-detail.html#id='+data[i].id+'">'+
 						'<img src="'+data[i].pic+'" class="img-fluid" alt="" width="800" height="400">' +
 						'<div class="read_more"><span>Read more</span></div></a><small>BeiJing Centre</small></figure><div class="wrapper">' +
 						'<div class="cat_star">'+icon_star+'</div>'+
-						'<h3><a href="hotel-detail.html">'+data[i].name+'</a></h3>' +
+						'<h3><a href="hotel-detail.html#id='+data[i].id+'">'+data[i].name+'</a></h3>' +
 						'<p>'+data[i].addr+'</p>' +
 						'<span class="price">起价 <strong>￥'+data[i].price+'</strong> /位</span></div><ul>'+
 						'<li><i class="ti-eye"></i>    &nbsp;164 views</li>' +
 						'<li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>'+data[i].score+'</strong></div></li></ul></div></div>';
 			}
-
-			$(' .container #row').html('').append(str+'<button onclick=\"prePage()\">上一页</button><button onclick=\"nextPage()\">下一页</button>');
+			str+='<button onclick="devPage()">上一页</button><button onclick="addPage()">下一页</button>';
+			$(' .container #row').html('').append(str);
 		});
-		// // function showPage(obj) {
-		// 	$.get('hotel/totalPage', {start:star}, function (obj) {
-		// 		window.location.href="hotels-grid-isotope.html?star="+'"'+star+'"';
-		// 		console.log(obj);
-		//
-		// 	});
-		// }
 
 
 
 	}
 	</script>
+
 </body>
 </html>

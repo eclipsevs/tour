@@ -12,7 +12,7 @@
 
     <!-- 查询全部 -->
     <select id="findAll" resultMap="resultMap01">
-      select oid, hotel.name, `order`.oprice,hotel.pic from hotel,`order` where `order`.ocid=hotel.id and ostatus=#{ostatus} and uid=#{uid}
+      select oid,`order`.osum,`order`.oprice,hotel.pic, hotel.name from hotel,`order` where `order`.ocid=hotel.id and ostatus=#{ostatus} and uid=#{uid}
     </select>
 
   <!-- 订单状态更新为已支付 -->
@@ -32,4 +32,14 @@
   <insert id="add" parameterType="Order">
     insert into `order` values (null,#{id},#{uid},1,#{oprice},now(),1,null,null,null)
   </insert>
+
+  <!-- 根据商品号，用户编号和状态号查询购物车中是否有未支付的该商品号的商品 -->
+  <select id="findByIdAndUid" resultType="Hotel" parameterType="Hotel">
+    select oid,ocid,uid,ostatus,oprice from `order` where ocid = #{ocid} and uid = #{uid} and ostatus = #{ostatus}
+  </select>
+
+  <!-- 更新订单的商品数量 -->
+  <update id="updateNum" parameterType="Hotel">
+    update "order" set osum = osum+#{num} where id = #{id}
+  </update>
 </mapper>

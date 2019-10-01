@@ -14,12 +14,10 @@
 	</select>
 
   <select id="findByStart" resultType="Hotel">
-		select id,hid,name,price,city,xpath,ypath,pic,addr,score,start from hotel where start=#{start} order by id desc
+		select * from (select id,hid,name,price,city,xpath,ypath,pic,addr,score,start from hotel where start=#{start} order by id asc)as a limit #{pageNum},6
 	</select>
-
         <select id="findById" parameterType="Hotel" resultType="Hotel">
 		select id,hid,name,price,city,xpath,ypath,pic,addr,score,start from hotel where id = #{id}
 	</select>
-
 
 </mapper>

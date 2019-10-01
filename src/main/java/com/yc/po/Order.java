@@ -17,7 +17,7 @@ public class Order implements Serializable {
 
     private Integer ostatus;
 
-    private Double oprice;
+    private double oprice;
 
     private Date otime;
 
@@ -134,4 +134,5 @@ public class Order implements Serializable {
                 ", hotel=" + hotel +
                 '}';
     }
+
 }

@@ -39,6 +39,7 @@
 			$.post("order/findAll",{ostatus:1,uid:2},function (data) {
 				console.log(data);
 				if (data==false){
+					alert(data);
 					window.location.href="login.html";
 				}
 				if (data == null) {
@@ -49,10 +50,10 @@
 
 				$.each(data,function (index,item) {
 					str += '<tr><td><input type="hidden" value="'+item.oid+'"/><div class="thumb_cart"><img src="'+item.hotel.pic+'" alt="Iamge"></div>'
-							+'<span class="item_cart">'+item.hotel.name+'</span></td><td>0%</td>'
+							+'<span class="item_cart">'+item.hotel.name+'</span></td><td>'+item.osum+'</td>'
 							+'<td><strong>'+item.oprice+'</strong></td><td class="options" style="width:5%; text-align:center;">'
 							+'<a onclick="deleteById(this)">X</a></td></tr>'
-                    count+=item.oprice;
+                    count+=item.oprice*item.osum;
 					id+=item.oid+"x";
 				});
 				$('.table tbody').html('').append(str);
@@ -247,7 +248,7 @@
 										商品
 									</th>
 									<th>
-										折扣
+										数量
 									</th>
 									<th>
 										价格

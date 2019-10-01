@@ -17,13 +17,28 @@ import java.util.List;
 public class OrderItemZipImpl implements OrderItemZip {
     @Autowired
     private OrderitemsMapper mapper;
+
     /**
      * 插入具体支付信息（交易号和对应的订单号）为退款做准备
-     * @param list  包含交易号
+     *
+     * @param id    订单号
+     * @param trade 交易号
      * @return
      */
     @Override
-    public int insert(List<Orderitems> list) {
+    public int insert(String id, String trade) {
+        if (id == null || id.length() <= 0 || trade == null || trade.length() <= 0) {
+            return -1;
+        }
+        List<Orderitems> list = new ArrayList<>();
+        String[] strs = id.split("x");
+        for (String str : strs) {
+            Orderitems orderitems = new Orderitems();
+            System.out.println(str);
+            orderitems.setOid(Integer.parseInt(str));
+            orderitems.setOtcid(trade);
+            list.add(orderitems);
+        }
         return mapper.insert(list);
     }
 }

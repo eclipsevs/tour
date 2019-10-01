@@ -29,19 +29,6 @@ public class OrderItemController {
     @RequestMapping("/insert")
     @ResponseBody
     private int insert(String id, String trade){
-        System.out.println(id+"---"+trade);
-        if (id == null || id.length()<=0 || trade == null || trade.length()<=0 ) {
-            return -1;
-        }
-        List<Orderitems> list = new ArrayList<>();
-        String [] strs = id.split("x");
-        for (String str : strs) {
-            Orderitems orderitems = new Orderitems();
-            System.out.println(str);
-            orderitems.setOid(Integer.parseInt(str));
-            orderitems.setOtcid(trade);
-            list.add(orderitems);
-        }
-        return orderItemZip.insert(list);
+        return orderItemZip.insert(id, trade);
     }
 }

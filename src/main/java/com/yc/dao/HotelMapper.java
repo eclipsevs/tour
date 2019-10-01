@@ -1,6 +1,7 @@
 package com.yc.dao;
 
 import com.yc.po.Hotel;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -11,8 +12,13 @@ public interface HotelMapper {
      */
     public List<Hotel> finds();
 
-    //根据星级查询
-    public List<Hotel> findByStart(String start);
+    /**
+     * 根据星级查询
+     * @param start
+     * @param pageNum
+     * @return
+     */
+    List<Hotel> findByStart(@Param("start") String start, @Param("pageNum") Integer pageNum);
     /**
      * 查看所有酒店
      * @return
