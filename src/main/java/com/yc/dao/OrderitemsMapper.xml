@@ -13,4 +13,8 @@
       (null, #{Orderitem.oid}, #{Orderitem.otcid})
     </foreach>
   </insert>
+
+  <select id="findByOid" resultType="Orderitems">
+    select otcid from orderitems where oid = #{oid}
+  </select>
 </mapper>

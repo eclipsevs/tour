@@ -28,6 +28,6 @@ public class TestOrderItem {
             orderitems.setOtcid("2");
             list.add(orderitems);
         }
-        System.out.println(orderItemZip.insert(list));
+//        System.out.println(orderItemZip.insert(list));
     }
 }

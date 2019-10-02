@@ -1,5 +1,6 @@
 package com.yc.controller;
 
+import com.yc.po.Order;
 import com.yc.zip.impl.OrderZipImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,7 @@ public class OrderController {
      */
     @RequestMapping("/findAll")
     @ResponseBody
-    public List<Object> findAll(HttpServletRequest request, Integer ostatus) {
+    public List<Order> findAll(HttpServletRequest request, Integer ostatus) {
         return orderZip.findAll(request, ostatus);
     }
 
@@ -37,12 +38,13 @@ public class OrderController {
      * 更新支付后的订单状态
      *
      * @param id 订单号
+     * @param ostatus 状态码
      * @return
      */
     @RequestMapping("/updateStatus")
     @ResponseBody
-    public int updateStatus(String id) {
-        return orderZip.updateStatus(id);
+    public int updateStatus(String id, Integer ostatus) {
+        return orderZip.updateStatus(id,ostatus);
     }
 
 

@@ -17,4 +17,11 @@ public interface OrderItemZip {
      * @return
      */
     public int insert(String id, String trade);
+
+    /**
+     * 根据订单号查询交易号
+     * @param oid 订单号
+     * @return
+     */
+    Orderitems findByOid(Integer oid);
 }

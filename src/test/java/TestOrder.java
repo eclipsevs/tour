@@ -1,3 +1,4 @@
+import com.yc.controller.OrderController;
 import com.yc.po.Order;
 import com.yc.zip.impl.OrderZipImpl;
 import org.junit.Test;
@@ -18,6 +19,7 @@ import java.util.List;
 public class TestOrder {
     @Autowired
     private OrderZipImpl orderZip;
+    OrderController controller = new OrderController();
 
     /**
      * 测试订单表的查询全部
@@ -26,8 +28,8 @@ public class TestOrder {
     public void testFindAll() {
         int ostatus = 1;
         int uid = 2;
-        List<Object> list = orderZip.findAll(ostatus, uid);
-        System.out.println(list);
+//        List<Object> list = orderZip.findAll(ostatus, uid);
+//        System.out.println(list);
     }
 
     /**
@@ -35,14 +37,7 @@ public class TestOrder {
      */
     @Test
     public void testUpdateStatus() {
-        List<Order> list = new ArrayList<>();
-        for (int i = 7; i < 9; i++) {
-            Order order = new Order();
-            order.setOid(i);
-            order.setUid(2);
-            list.add(order);
-        }
-        System.out.println(orderZip.updateStatus(list));
+        System.out.println(controller.updateStatus("14x15",2));
     }
 
     @Test

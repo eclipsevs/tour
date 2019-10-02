@@ -16,8 +16,8 @@
     </select>
 
   <!-- 订单状态更新为已支付 -->
-    <update id="updateStatus" parameterType="java.util.List">
-      update `order` set ostatus=2 where oid in
+    <update id="updateStatus" parameterType="Order">
+      update `order` set ostatus=#{ostatus} where oid in
       <foreach collection="list" item="Order" open="(" separator="," close=")">
         #{Order.oid}
       </foreach>

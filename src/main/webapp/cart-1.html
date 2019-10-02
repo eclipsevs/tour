@@ -36,10 +36,8 @@
 		function findAll() {
 			count=0;
 			id='';
-			$.post("order/findAll",{ostatus:1,uid:2},function (data) {
-				console.log(data);
+			$.post("order/findAll",{ostatus:1},function (data) {
 				if (data==false){
-					alert(data);
 					window.location.href="login.html";
 				}
 				if (data == null) {

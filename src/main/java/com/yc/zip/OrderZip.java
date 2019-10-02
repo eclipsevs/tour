@@ -20,15 +20,16 @@ public interface OrderZip {
      * @param ostatus 状态码
      * @return
      */
-    public List<Object> findAll(HttpServletRequest request, Integer ostatus);
+    public List<Order> findAll(HttpServletRequest request, Integer ostatus);
 
     /**
      * 修改支付完成的订单状态
      *
      * @param id 包含要修改的订单号和用户编号
+     * @param ostatus 状态码
      * @return
      */
-    public int updateStatus(String id);
+    public int updateStatus(String id,Integer ostatus );
 
     /**
      * 根据id删除订单

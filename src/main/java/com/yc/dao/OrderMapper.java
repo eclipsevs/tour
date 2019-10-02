@@ -25,14 +25,15 @@ public interface OrderMapper {
      * @param uid  用户id
      * @return
      */
-    public List<Object> findAll(@Param("ostatus") Integer ostatus, @Param("uid") Integer uid);
+    public List<Order> findAll(@Param("ostatus") Integer ostatus, @Param("uid") Integer uid);
 
     /**
      * 修改支付完成的订单状态
      * @param list 包含要修改的订单号和用户编号
+     * @param ostatus 状态码
      * @return
      */
-    public int updateStatus(List<Order> list);
+    public int updateStatus(@Param("list") List<Order> list,@Param("ostatus") Integer ostatus);
 
     /**
      * 根据id删除订单

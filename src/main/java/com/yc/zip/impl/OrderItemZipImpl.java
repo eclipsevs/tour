@@ -41,4 +41,14 @@ public class OrderItemZipImpl implements OrderItemZip {
         }
         return mapper.insert(list);
     }
+
+    /**
+     * 根据订单号查询交易号
+     * @param oid 订单号
+     * @return
+     */
+    @Override
+    public Orderitems findByOid(Integer oid) {
+        return mapper.findByOid(oid);
+    }
 }

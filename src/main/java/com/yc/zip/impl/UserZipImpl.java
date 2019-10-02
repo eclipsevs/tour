@@ -54,8 +54,10 @@ public class UserZipImpl implements UserZip {
         HttpSession session = request.getSession();
         session.setAttribute("user", user.getUid());
         if (user == null) {
+            System.out.println("kkkkkkkkk");
             return -1;
         } else {
+            System.out.println("hhhhhhhh");
             return 1;
         }
     }

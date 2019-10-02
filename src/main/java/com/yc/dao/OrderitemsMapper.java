@@ -15,5 +15,13 @@ public interface OrderitemsMapper {
      * @param list 包含交易号和订单号
      * @return
      */
-    public int insert(List<Orderitems> list);
+    int insert(List<Orderitems> list);
+
+    /**
+     * 根据订单号查询交易号
+     * @param oid 订单号
+     * @return
+     */
+    Orderitems findByOid(Integer oid);
+
 }

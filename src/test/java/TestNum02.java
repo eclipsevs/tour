@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class TestNum02 {
     public static void main(String[] args) {
-        for (int i = 1; i < 100_000_000_0; i++) {
+        for (int i = 1; i < 100_000_000; i++) {
             if (i == pre(i) && test(i) ){
                 System.out.println(i);
             }

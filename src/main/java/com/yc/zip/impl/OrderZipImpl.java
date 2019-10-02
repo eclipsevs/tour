@@ -32,7 +32,7 @@ public class OrderZipImpl implements OrderZip {
      * @return
      */
     @Override
-    public List<Object> findAll(HttpServletRequest request, Integer ostatus) {
+    public List<Order> findAll(HttpServletRequest request, Integer ostatus) {
         if (ostatus == null) {
             return null;
         }
@@ -45,10 +45,11 @@ public class OrderZipImpl implements OrderZip {
     /**
      * 支付后修改订单状态
      * @param id 包含要修改的订单号和用户编号
+     * @param ostatus 状态码
      * @return
      */
     @Override
-    public int updateStatus(String id) {
+    public int updateStatus(String id,Integer ostatus) {
         if (id == null || id.length() <= 0) {
             return -1;
         }
@@ -62,7 +63,7 @@ public class OrderZipImpl implements OrderZip {
             order.setOid(Integer.parseInt(oid));
             list.add(order);
         }
-        return orderMapper.updateStatus(list);
+        return orderMapper.updateStatus(list,ostatus);
     }
 
     /**

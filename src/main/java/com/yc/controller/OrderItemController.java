@@ -31,4 +31,10 @@ public class OrderItemController {
     private int insert(String id, String trade){
         return orderItemZip.insert(id, trade);
     }
+
+    @RequestMapping("/findByOid")
+    @ResponseBody
+    Orderitems findByOid(Integer oid){
+        return orderItemZip.findByOid(oid);
+    }
 }

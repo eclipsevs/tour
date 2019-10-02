@@ -67,7 +67,7 @@
  //var pwd = "<%=session.getAttribute("pwd")%>";
  //$.get('msg.action',{op:"msg",o_dis:pwd});
  $.get('OrderItem/insert',{id:id,trade:trade_no});
- $.get('order/updateStatus',{id:id},function(data){
+ $.get('order/updateStatus',{id:id,ostatus:2},function(data){
 	if(data>=1){
 		window.location.href="index.html";
 	}else{
