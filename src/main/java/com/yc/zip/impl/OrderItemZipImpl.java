@@ -34,7 +34,6 @@ public class OrderItemZipImpl implements OrderItemZip {
         String[] strs = id.split("x");
         for (String str : strs) {
             Orderitems orderitems = new Orderitems();
-            System.out.println(str);
             orderitems.setOid(Integer.parseInt(str));
             orderitems.setOtcid(trade);
             list.add(orderitems);

@@ -48,6 +48,7 @@ public class AliPayImpl {
             response.setContentType("text/html;charset=" + AlipayConfig.charset);
             //直接将完整的表单html输出到页面
             response.getWriter().write(result);
+
             response.getWriter().flush();
             response.getWriter().close();
 

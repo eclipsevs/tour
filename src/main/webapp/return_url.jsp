@@ -59,8 +59,7 @@
 <script type="text/javascript">
     var id = "<%=session.getAttribute("out_trrade")%>";
     var trade_no = "<%=session.getAttribute("trade")%>";
-    //var pwd = "<%=session.getAttribute("pwd")%>";
-    //$.get('msg.action',{op:"msg",o_dis:pwd});
+    $.get('msg.action',{op:"msg",o_dis:pwd});
     $.get('OrderItem/insert', {id: id, trade: trade_no});
     $.get('order/updateStatus', {id: id, ostatus: 2}, function (data) {
         if (data >= 1) {

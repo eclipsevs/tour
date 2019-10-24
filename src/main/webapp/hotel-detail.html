@@ -793,7 +793,7 @@
     }
     //加入购物车
     function addOrder() {
-        $.post("order/add", {id:id, uid:2}, function (data) {
+        $.post("order/add", {id:id}, function (data) {
             if (data<0){
                 alert("插入失败");
             }

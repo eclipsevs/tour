@@ -16,7 +16,7 @@ public interface UserMapper {
      * @param uidcard 身份证
      * @return
      */
-    public int add(@Param("uname") String uname, @Param("utel") String utel,
+     int add(@Param("uname") String uname, @Param("utel") String utel,
                    @Param("upwd") String upwd, @Param("uidcard") String uidcard);
 
     /**
@@ -25,5 +25,12 @@ public interface UserMapper {
      * @param upwd 密码
      * @return
      */
-    public User login(@Param("utel") String utel, @Param("upwd")String upwd);
+     User login(@Param("utel") String utel, @Param("upwd")String upwd);
+
+    /**
+     * 根据用户id来查询用户信息
+     * @param uid
+     * @return
+     */
+     User findById(int uid);
 }

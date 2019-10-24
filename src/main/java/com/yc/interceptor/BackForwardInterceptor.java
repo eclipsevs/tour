@@ -1,5 +1,6 @@
 package com.yc.interceptor;
 
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,7 +22,7 @@ public class BackForwardInterceptor implements HandlerInterceptor {
         session.setAttribute("path",path);
         Integer uid =  (Integer)session.getAttribute("user");
         //内部转发
-        if (uid != null ) {
+        if (uid == null ) {
             return true;
         }
         return false;

@@ -33,7 +33,7 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>5.1.47</version>
+      <version>8.0.17</version>
     </dependency>
     <!-- 日志部分 -->
     <dependency>
@@ -217,6 +217,26 @@
       <groupId>org.springframework.data</groupId>
       <artifactId>spring-data-redis</artifactId>
       <version>1.6.2.RELEASE</version>
+    </dependency>
+
+    <!-- 云端消息jar包 -->
+    <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpcore</artifactId>
+      <version>4.2.1</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.2.1</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-util -->
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-util</artifactId>
+      <version>9.3.7.v20160115</version>
     </dependency>
 
 

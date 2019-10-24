@@ -12,7 +12,7 @@ public class Room implements Serializable {
 
     private Integer id;
 
-    private BigDecimal rprice;
+    private double rprice;
 
     private Integer rstatus;
 
@@ -36,11 +36,11 @@ public class Room implements Serializable {
         this.id = id;
     }
 
-    public BigDecimal getRprice() {
+    public double getRprice() {
         return rprice;
     }
 
-    public void setRprice(BigDecimal rprice) {
+    public void setRprice(double rprice) {
         this.rprice = rprice;
     }
 

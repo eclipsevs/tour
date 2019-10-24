@@ -9,4 +9,8 @@
   <select id="login" parameterType="User" resultType="User">
     select utel,upwd,uid from user where utel = #{utel} and upwd=md5(#{upwd})
   </select>
+
+  <select id="findById" resultType="User" parameterType="int">
+    select utel,upwd,uidcard from user where uid = #{uid}
+  </select>
 </mapper>

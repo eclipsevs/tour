@@ -37,7 +37,8 @@
 			count=0;
 			id='';
 			$.post("order/findAll",{ostatus:1},function (data) {
-				if (data==false){
+			    alert(data);
+				if (data==true){
 					window.location.href="login.html";
 				}
 				if (data == null) {
