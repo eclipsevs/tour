@@ -14,11 +14,11 @@ public interface HotelMapper {
 
     /**
      * 根据星级查询
-     * @param start
+     * @param star
      * @param pageNum
      * @return
      */
-    List<Hotel> findByStart(@Param("start") String start, @Param("pageNum") Integer pageNum);
+    List<Hotel> findByStar(@Param("star") String star, @Param("pageNum") Integer pageNum);
     /**
      * 查看所有酒店
      * @return

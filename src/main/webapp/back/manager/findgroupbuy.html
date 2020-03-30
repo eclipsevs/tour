@@ -1,0 +1,44 @@
+<table id="find_groupbuy"></table>
+<script>
+$('#find_groupbuy').datagrid({
+    url:'groupBuy.action',
+    queryParams:{op:'find'},
+    pagination:true,
+    pageSize:4,
+    pageList:[2,4,6,8,10],
+    toolbar:[{
+   		iconCls:'icon-add',
+   		handler:function(){alert('add')}
+    },'-',{
+    	iconCls:'icon-edit',
+    	handler:function(){alert('edit')}
+    },'-',{
+    	iconCls:'icon-search',
+    	handler:function(){
+    		//$('#show_seller').datagrid('load',{op:'find',s_state:1});//查询账号禁用的
+    	}
+    }],
+    columns:[[
+        {field:'gb_id',title:'团购编号',width:100},
+        {field:'g_id',title:'商品编号',width:100},
+        //{field:'t_id',title:'商品类型',width:100,align:'right'},
+        {field:'gb_name',title:'团购名称',width:100,align:'right'},
+        //{field:'g_mark',title:'描述',width:100,align:'right'},
+        {field:'gb_price',title:'团购价格',width:100,align:'right'},
+        {field:'gb_start',title:'开始时间',width:100,align:'right'},
+        {field:'gb_end',title:'结束时间',width:100,align:'right'},
+        {field:'gb_type',title:'套餐类型',width:100,align:'right'},
+        {field:'gb_num',title:'团购人数',width:100,align:'right'},
+        {field:'gb_click',title:'点赞数',width:100,align:'right'},
+        {field:'gb_desc',title:'图片',width:100,align:'right',
+        	formatter:function(value,row,index){
+            	    if(value){
+            	        return "<img src='"+value+"'style=\"width:75px;height:50px;\">"
+            	    }else{
+            	        return null;    
+            	    }
+            	}
+        },
+    ]]
+});
+</script>

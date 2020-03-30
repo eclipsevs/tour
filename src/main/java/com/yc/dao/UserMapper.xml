@@ -3,7 +3,7 @@
 <mapper namespace="com.yc.dao.UserMapper">
   <!-- 注册用户 -->
     <insert id="add" parameterType="com.yc.po.User" >
-      insert into user values (null, #{uname}, '男', #{utel}, md5(#{upwd}), null,#{uidcard}, null)
+      insert into user values (null, #{uname}, '男', #{utel}, md5(#{upwd}), #{uidcard}, null)
     </insert>
   <!-- 用户登录 -->
   <select id="login" parameterType="User" resultType="User">

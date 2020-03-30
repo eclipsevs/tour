@@ -52,14 +52,14 @@ public class HotelBizImpl implements IHotelBiz {
     /**
      * 根据星级查询
      *
-     * @param start 星级
+     * @param star 星级
      * @param pageNum 页数
      * @return
      */
     @Override
-    public List<Hotel> findByStart(String start,Integer pageNum) {
+    public List<Hotel> findByStar(String star,Integer pageNum) {
         pageNum = (pageNum-1)*6;
-        return hotelMapper.findByStart(start,pageNum);
+        return hotelMapper.findByStar(star,pageNum);
     }
 
     /**

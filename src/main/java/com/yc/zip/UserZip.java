@@ -1,6 +1,5 @@
 package com.yc.zip;
 
-import com.yc.po.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

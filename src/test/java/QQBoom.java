@@ -8,7 +8,7 @@ import java.awt.event.KeyEvent;
 
 public class QQBoom {
 	public static void main(String[] args)throws AWTException {
-		String sentence = "秃驴，秃驴，秃驴，秃驴，秃驴，秃驴，秃驴，秃驴";// 定义要发送的话
+		String sentence = "冬至快乐，冬至快乐，冬至快乐，冬至快乐，冬至快乐，冬至快乐，冬至快乐，冬至快乐";// 定义要发送的话
 		Robot robot = new Robot();// 创建Robot对象
 		robot.delay(3000);// 延迟三秒，主要是为了预留出打开窗口的时间，括号内的单位为毫秒
 		Clipboard clip = Toolkit.getDefaultToolkit().getSystemClipboard();

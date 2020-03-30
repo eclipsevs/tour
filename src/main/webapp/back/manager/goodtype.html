@@ -1,0 +1,31 @@
+<table id="show_goodparent"></table>
+<script type="text/javascript">
+$('#show_goodparent').datagrid({
+	url:'goodType.action',
+	queryParams:{op:'find',t_parent:"0"},
+	pagination:true,
+	pageSize:4,
+	pageList:[1,2,4,8,10],
+	toolbar:[{
+		iconCls:'icon-add',
+		handler:function(){alert('edit')}
+	},'-',{
+		iconCls:'icon-edit',
+		handler:function(){alert('help')}
+	},'-',{
+		iconCls:'icon-search',
+		handler:function(){
+			$('#show_goodparent').datagrid('load',{
+				op:'find'
+			});
+		}
+	}],
+	columns:[[
+	          {field:'t_id',title:'类型编号',width:200,align : 'center',},
+	          {field:'t_name',title:'类型名称',width:100,align : 'center',},
+	          {field:'t_disc',title:'是否正常',width:100,align : 'center',}
+	         
+	          ]]
+});
+
+</script>

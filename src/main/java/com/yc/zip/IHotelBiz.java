@@ -25,11 +25,11 @@ public interface IHotelBiz {
     /**
      * 根据星级查询酒店
      *
-     * @param start 星级
+     * @param star 星级
      * @param pageNum 页数
      * @return
      */
-    public List<Hotel> findByStart(String start,Integer pageNum);
+    public List<Hotel> findByStar(String star,Integer pageNum);
 
     /**
      * 根据酒店id查看酒店详情

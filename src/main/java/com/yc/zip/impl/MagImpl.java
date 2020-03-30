@@ -30,7 +30,7 @@ public class MagImpl{
 
 		//随机生成一个六位数的验证码
 		Random random = new Random();
-		int num = random.nextInt(999999)+100000;
+		int num = random.nextInt(899999)+100000;
 		String code = new Integer(num).toString();
 
 		String host = "https://dxyzm.market.alicloudapi.com";

@@ -44,8 +44,8 @@ public class HotelController {
     @RequestMapping("/findByStar")
     @ResponseBody
     //根据星级查询酒店信息
-    public List<Hotel> findByStart(String start,Integer pageNum) {
-            return biz.findByStart(start,pageNum);
+    public List<Hotel> findByStar(String star,Integer pageNum) {
+            return biz.findByStar(star,pageNum);
     }
 
     /**

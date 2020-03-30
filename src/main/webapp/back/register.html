@@ -1,0 +1,101 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>商家注册</title>
+<!-- Meta tag Keywords -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Event Register Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Meta tag Keywords -->
+<!-- css files -->
+<link rel="stylesheet" href="css/re.css" type="text/css" media="all" /> <!-- Style-CSS --> 
+<link rel="stylesheet" href="css/font-awesome.css"> <!-- Font-Awesome-Icons-CSS -->
+<!-- //css files -->
+<!-- js -->
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+</head>
+<body>
+<script src="js/jquery.vide.min.js"></script>
+<!-- main -->
+<div data-vide-bg="video/Ipad">
+<div class="center-container">
+<div class="w3ls-header">
+	<div class="header-main">
+		<h1>注册</h1>
+			<div class="header-bottom">
+				<div class="header-right w3agile">
+					<div class="header-left-bottom agileinfo">
+					
+						<form id="form" method="post" enctype="multipart/form-data">
+						
+						<input type="hidden" name="op" value="register" />
+							<div class="icon1">
+								<i class="fa fa-user" aria-hidden="true"></i>
+								<input  type="text" name="s_name" placeholder="姓名"/>
+							</div>
+							<div class="icon1">
+								<i class="fa fa-phone" aria-hidden="true"></i>	
+								<input type="tel" name="s_tel" placeholder="手机号码" />
+							</div>
+							<div class="icon1">
+								<i class="fa fa-lock" aria-hidden="true"></i>
+								<input type="password" name="s_pwd" placeholder="密码" />
+							</div>
+							<div class="icon1">
+								<i class="fa fa-lock" aria-hidden="true"></i>
+								<input type="password" placeholder="确认密码" />
+							</div>
+							<div class="icon1">
+								<i class="fa fa-lock" aria-hidden="true"></i>
+								<input type="file" name="s_licence" placeholder="营业执照" />
+							</div>
+							<div class="icon1">
+								<i class="fa fa-lock" aria-hidden="true"></i>
+								<input type="text" name="s_addr" placeholder="地址" />
+							</div>
+							<div class="icon1">
+								<i class="fa fa-lock" aria-hidden="true"></i>
+								<input type="file" name="s_pic" placeholder="照片" />
+							</div>
+							<div class="bottom">
+								<input id="btn" type="submit" value="注册" />
+							</div>
+					</form>	
+					</div>
+				</div>
+			</div>
+	</div>
+</div>
+<!--header end here-->
+	<!-- copyright start here -->
+	<div class="copyright">
+		<p>© 2017 Event Register Form. All rights reserved | Design by  <a href="http://w3layouts.com/" target="_blank">  W3layouts </a></p>
+	</div>
+	<!--copyright end here-->
+</div>
+</div>
+<script type="text/javascript">
+$('#btn').click(function(){
+	var formData = new FormData($('#form')[0]);
+	$.ajax({
+		type:'post',
+		url:"../register.action",
+		data:formData,
+		cache:false,
+		processData:false,
+		contentType:false,
+		success:function(data){
+			alert(data);
+		},
+		error:function(){
+			alert("上传失败");
+		}
+	});
+});
+</script>
+</body>
+</html>

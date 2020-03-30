@@ -2,7 +2,6 @@ package com.yc.zip;
 
 import com.yc.po.Hotel;
 import com.yc.po.Order;
-import org.apache.ibatis.annotations.Param;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

@@ -602,12 +602,12 @@
         }
 		star1 = star;
 		var str='';
-		$.get('hotel/findByStar', {start:star,pageNum:pageNum}, function (data) {
+		$.get('hotel/findByStar', {star:star,pageNum:pageNum}, function (data) {
             console.log(data);
             console.log(pageNum);
 			for (var i = 0; i < data.length; i++) {
 				var icon_star='';
-				for (var j = 0; j < data[i].start; j++) {
+				for (var j = 0; j < data[i].star; j++) {
 					icon_star+='<i class="icon_star"></i>';
 				}
 				str+='<div class="col-xl-4 col-lg-6 col-md-6 isotope-item popular"><div class="box_grid"><figure>'+

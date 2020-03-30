@@ -8,21 +8,36 @@ import java.util.Date;
  */
 public class Comments implements Serializable {
     private static final long serialVersionUID = 4017394861934976851L;
+
+    /**
+     * 评论ID号
+     */
     private Integer cid;
 
-    private Integer oid;
-
+    /**
+     * 该条评论对应的用户ID号
+     */
     private Integer uid;
 
-    private Integer gid;
-
+    /**
+     * 该条评论对应的景点ID号
+     */
     private Integer sid;
 
-    private Integer gtid;
-
+    /**
+     *
+     */
     private String cpics;
 
+    /**
+     * 评论时间
+     */
     private Date ctime;
+
+    /**
+     * 评论内容
+     */
+    private String cDesc;
 
     public Integer getCid() {
         return cid;
@@ -30,14 +45,6 @@ public class Comments implements Serializable {
 
     public void setCid(Integer cid) {
         this.cid = cid;
-    }
-
-    public Integer getOid() {
-        return oid;
-    }
-
-    public void setOid(Integer oid) {
-        this.oid = oid;
     }
 
     public Integer getUid() {
@@ -48,28 +55,12 @@ public class Comments implements Serializable {
         this.uid = uid;
     }
 
-    public Integer getGid() {
-        return gid;
-    }
-
-    public void setGid(Integer gid) {
-        this.gid = gid;
-    }
-
     public Integer getSid() {
         return sid;
     }
 
     public void setSid(Integer sid) {
         this.sid = sid;
-    }
-
-    public Integer getGtid() {
-        return gtid;
-    }
-
-    public void setGtid(Integer gtid) {
-        this.gtid = gtid;
     }
 
     public String getCpics() {
@@ -88,17 +79,23 @@ public class Comments implements Serializable {
         this.ctime = ctime;
     }
 
+    public String getcDesc() {
+        return cDesc;
+    }
+
+    public void setcDesc(String cDesc) {
+        this.cDesc = cDesc;
+    }
+
     @Override
     public String toString() {
         return "Comments{" +
                 "cid=" + cid +
-                ", oid=" + oid +
                 ", uid=" + uid +
-                ", gid=" + gid +
                 ", sid=" + sid +
-                ", gtid=" + gtid +
                 ", cpics='" + cpics + '\'' +
                 ", ctime=" + ctime +
+                ", cDesc='" + cDesc + '\'' +
                 '}';
     }
 }

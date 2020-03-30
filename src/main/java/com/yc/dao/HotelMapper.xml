@@ -3,21 +3,21 @@
 <mapper namespace="com.yc.dao.HotelMapper">
   <!--  public List<Hotel> finds();-->
   <select id="finds" resultType="Hotel">
-	 select id,hid,name,price,city,xpath,ypath,pic,addr,score,start from hotel h1 where 4> (select count(id) from hotel h2 where h2.id>h1.id)
-	  order by h1.start desc
+	 select id,hid,name,price,city,xpath,ypath,pic,addr,score,star from hotel h1 where 4> (select count(id) from hotel h2 where h2.id>h1.id)
+	  order by h1.star desc
 	</select>
 
   <!-- public List<Hotel> findAll();-->
   <select id="findAll" resultType="Hotel">
-		select id,hid,name,price,city,xpath,ypath,pic,addr,score,start from hotel h1 where 6> (select count(id) from hotel h2 where h2.id>h1.id)
-	  order by h1.start desc
+		select id,hid,name,price,city,xpath,ypath,pic,addr,score,star from hotel h1 where 6> (select count(id) from hotel h2 where h2.id>h1.id)
+	  order by h1.star desc
 	</select>
 
-  <select id="findByStart" resultType="Hotel">
-		select * from (select id,hid,name,price,city,xpath,ypath,pic,addr,score,start from hotel where start=#{start} order by id asc)as a limit #{pageNum},6
+  <select id="findByStar" resultType="Hotel">
+		select * from (select id,hid,name,price,city,xpath,ypath,pic,addr,score,star from hotel where star=#{star} order by id asc)as a limit #{pageNum},6
 	</select>
         <select id="findById" parameterType="Hotel" resultType="Hotel">
-		select id,hid,name,price,city,xpath,ypath,pic,addr,score,start from hotel where id = #{id}
+		select id,hid,name,price,city,xpath,ypath,pic,addr,score,star from hotel where id = #{id}
 	</select>
 
 </mapper>

@@ -1,0 +1,124 @@
+<table id="show_seller"></table>
+<script type="text/javascript">
+	$('#show_seller').datagrid(
+			{
+				url : 'seller.action',
+				queryParams : {
+					op : 'find'
+				},
+				pagination:true,
+				pageSize:4,
+				pageList:[2,4,6,8,10],
+				toolbar:[{
+					iconCls:'icon-add',
+					handler:function(){alert('edit')}
+				},'-',{
+					iconCls:'icon-edit',
+					handler:function(){alert('help')}
+				},'-',{
+					iconCls:'icon-search',
+					handler:function(){
+						$('#show_seller').datagrid('load',{
+							op:'find',s_state:2
+						});
+					}
+				}],
+				columns : [ [
+						{
+							field : 's_id',
+							title : '商家编号',
+							width : 100
+						},
+						{
+							field : 's_name',
+							title : '商家账号',
+							width : 100
+						},
+						{
+							field : 's_pwd',
+							title : '商家密码',
+							width : 100,
+							align : 'right',
+							formatter : function(value, row, index) {
+								return '******';
+							}
+						},
+						{
+							field : 's_tel',
+							title : '商家手机号',
+							width : 100,
+							align : 'right'
+						},
+						{
+							field : 's_licence',
+							title : '营业执照',
+							width : 100,
+							align : 'right',
+							formatter : function(value, row, index) {
+								return '<img src='+value+' style=width:80px;height:80px;>';
+						}
+						},
+						{
+							field : 's_addr',
+							title : '商家地址',
+							width : 100,
+							align : 'right',
+						},
+						{
+							field : 's_pic',
+							title : '商家照片',
+							width : 100,
+							align : 'right',
+							formatter : function(value, row, index) {
+								return '<img src='+value+' style=width:80px;height:80px;>';
+						}
+						},
+						{
+							field : 's_state',
+							title : '账号状态',
+							width : 100,
+							align : 'right',
+							formatter : function(value, row, index) {
+								if (value == 1) {
+									return '待审核';
+								} else if(value==2){
+									return '可用';
+								}else{
+									return '禁用';
+								}
+							}
+						},
+						{
+							field : 's_option',
+							title : '账号操作',
+							width : 100,
+							formatter : function(value, row, index) {
+								if (row.s_state == 1 ) {
+									return '<a href="javascript:updateState('
+											+ row.s_id + ')">通过</a>';
+								} else if (row.s_state == 2) {
+									return '<a href="javascript:updateState('
+											+ row.s_id + ')">禁用</a>';
+								}else if (row.s_state == 3) {
+									return '<a href="javascript:updateState('
+									+ row.s_id + ')">启用</a>';
+								}
+							}
+						} ] ]
+			});
+	function updateState(sid) {
+		$.get("seller.action",{op:'update',s_id:sid},function(data){
+			if(data==1){
+				$.messager.show({
+					title:'温馨提示',
+					msg:'修改成功',
+					timeout:4000,
+					showType:'slide'
+				});
+				$('#show_seller').datagrid('reload');
+			}else {
+				$.messager.alert('错误提示','修改失败');
+			}
+		});
+	}
+</script>

@@ -1,0 +1,105 @@
+<style type="text/css">
+.nav {
+	width: 300px;
+	float: left;
+	padding: 20px;
+}
+
+.good {
+	float: left;
+	margin: 0 auto;
+	width: 510px;
+}
+
+.good form {
+	width: 500px;
+	padding-top: 20px;
+}
+
+.good form ul {
+	width: 500px;
+}
+
+.good form ul li {
+	width: 400px;
+	margin-top: 10px;
+}
+
+.good form ul li label {
+	display: inline-black;
+	text-align: right;
+	width: 100px;
+}
+</style>
+
+<div class="nav">
+	<ul id="sgd" class="easyui-tree" style="width: 200px;"
+		data-options="url:'good.action?op=findType',animate:true,checkbox:true,
+		onClick: function(node){
+		 if(node.checked){
+         $('#sgd').tree('uncheck',node.target);
+        }else{
+         $('#sgd').tree('check',node.target);
+        }
+		var nodes = $('#sgd').tree('getChecked');
+		var str = '';	
+		for(var i=0; i<nodes.length; i++){
+		if($('#sgd').tree('isLeaf',nodes[i].target)){
+         str+=nodes[i].id+',';
+        }
+		}
+		$('#addgroup .g_id').val(str);
+	}">
+	</ul>
+	
+</div>
+
+<div class="good">
+	<form id="addgroup" method="post" enctype="multipart/form-data">
+		<ul>
+			<li><label>菜品名称：</label> <input type="text" name="g_id"
+				class="g_id" /></li>
+			<li><label>团购名称：</label><input type="text" name="gb_name" class="gb_name" /></li>
+			<li><label>团购价格：</label><input id="gb_price" type="text"
+				name="gb_price" /></li>
+			<li><label>开始时间：</label><input id="gb_start"
+				class="easyui-datebox" type="text" /></li>
+			<li><label>结束时间：</label><input id="gb_end"
+				class="easyui-datebox" type="text" /></li>
+			<li><label>原价格：</label><input type="text" name="gb_hottip" /></li>
+			<li><label>团购图片：</label><input type="file" name="gb_desc" /></li>
+			<li><label>套餐类型：</label><input type="text" name="gb_type" /></li>
+			<li><label>温馨提示：</label> <textarea name="gb_prompt"></textarea></li>
+			<li><label>套餐描述：</label> <textarea name="gb_typedesc"></textarea></li>
+			<li><label>其他提示：</label> <textarea name="gb_tishi"></textarea></li>
+			<li><label></label><a class="easyui-linkbutton tbn_add"
+				style="width: 80px;" href="javascript:void(0)">添加</a></li>
+		</ul>
+	</form>
+</div>
+
+<script type="text/javascript">
+$('.tbn_add').click(function(){
+	var formData = new FormData($('#addgroup')[0]);
+	var startdate = $('#addgroup #gb_start').datebox('getValue');
+	var enddate = $('#addgroup #gb_end').datebox('getValue');
+	formData.append("gb_start", startdate);
+	formData.append("gb_end", enddate);
+	$.ajax({
+		type:'post',
+		url:"groupbuyFileUpload.action",
+		data:formData,
+		cache:false,
+	    processData:false,
+	    contentType:false,
+	    success:function(data){
+		   alert(data);
+	   },
+	    error:function(){
+		   alert("上传失败");
+	   }
+	});
+});
+
+
+</script>

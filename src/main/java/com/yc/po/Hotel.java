@@ -27,7 +27,7 @@ public class Hotel implements Serializable {
 
     private String score;
 
-    private String start;
+    private String star;
 
     public Hotel(String score) {
         this.score = score;
@@ -113,12 +113,12 @@ public class Hotel implements Serializable {
         this.score = score;
     }
 
-    public String getStart() {
-        return start;
+    public String getStar() {
+        return star;
     }
 
-    public void setStart(String start) {
-        this.start = start;
+    public void setStar(String star) {
+        this.star = star;
     }
 
     @Override
@@ -134,12 +134,12 @@ public class Hotel implements Serializable {
                 ", pic='" + pic + '\'' +
                 ", addr='" + addr + '\'' +
                 ", score='" + score + '\'' +
-                ", start='" + start + '\'' +
+                ", star='" + star + '\'' +
                 '}';
     }
 
     public Hotel(Integer id, String hid, String name, double price, String city, String xpath,
-                 String ypath, String pic, String addr, String score, String start) {
+                 String ypath, String pic, String addr, String score, String star) {
         this.id = id;
         this.hid = hid;
         this.name = name;
@@ -150,7 +150,7 @@ public class Hotel implements Serializable {
         this.pic = pic;
         this.addr = addr;
         this.score = score;
-        this.start = start;
+        this.star = star;
     }
     public Hotel(){
         super();

@@ -1,0 +1,43 @@
+<table id="show_order"></table>
+<script type="text/javascript">
+$('#show_order').datagrid({
+	url:'order.action',
+	queryParams:{op:'findp'},
+	pagination:true,
+	pageSize:4,
+	pageList:[1,2,4,8,10],
+	toolbar:[{
+		iconCls:'icon-add',
+		handler:function(){alert('edit')}
+	},'-',{
+		iconCls:'icon-edit',
+		handler:function(){alert('help')}
+	},'-',{
+		iconCls:'icon-search',
+		handler:function(){
+			$('#show_order').datagrid('load',{
+				op:'find'
+			});
+		}
+	}],
+	columns:[[
+	          {field:'o_id',title:'订单编号',width:200,align : 'center',},
+	          {field:'m_id',title:'买家编号',width:100,align : 'center',},
+	          {field:'sm_id',title:'商品编号',width:100,align : 'center',},
+	          {field:'o_num',title:'商品数量',width:100,align : 'center',},
+	          {field:'o_price',title:'商品价格',width:100,align : 'center',},
+	          {field:'o_date',title:'订单时间',width:200,align : 'center',},
+	          {field:'o_state',title:'订单状态',width:100,align : 'center',
+	        	  formatter : function(value, row, index) {
+						if (value == 1) {
+							return '未支付';
+						} else if(value==2){
+							return '已支付';
+						}else{
+							return '已退款';
+						}
+					}}
+	          ]]
+});
+
+</script>

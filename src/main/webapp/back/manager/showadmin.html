@@ -1,0 +1,108 @@
+<table id="show_admin"></table>
+<script type="text/javascript">
+    var a_state=1;
+	$('#show_admin').datagrid(
+			{
+				url : 'admin.action',
+				queryParams : {
+					op : 'find',
+					a_state : 1
+				},
+				pagination:true,
+				pageSize:4,
+				pageList:[2,4,6,8,10],
+				toolbar:[{
+					iconCls:'icon-add',
+					handler:function(){alert('edit')}
+				},'-',{
+					iconCls:'icon-edit',
+					handler:function(){
+						}
+				},'-',{
+					iconCls:'icon-search',
+					handler:function(){
+						if(a_state==1){
+							a_state==2;
+							console.log(a_state);
+							$('#show_admin').datagrid('load',{
+							op:'find',a_state:2
+						});
+							
+							}else {
+								$('#show_admin').datagrid('load',{
+									op:'find',a_state:1
+								});
+							}
+						
+					}
+				}],
+				columns : [ [
+						{
+							field : 'a_id',
+							title : '管理员编号',
+							width : 100
+						},
+						{
+							field : 'a_name',
+							title : '管理员账号',
+							width : 100
+						},
+						{
+							field : 'a_pwd',
+							title : '管理员密码',
+							width : 100,
+							align : 'right',
+							formatter : function(value, row, index) {
+								return '******';
+							}
+						},
+						{
+							field : 'a_mark',
+							title : '管理员等级',
+							width : 100,
+							align : 'right'
+						},
+						{
+							field : 'a_state',
+							title : '账号状态',
+							width : 100,
+							align : 'right',
+							formatter : function(value, row, index) {
+								if (value == 1) {
+									return '可用';
+								} else {
+									return '禁用';
+								}
+							}
+						},
+						{
+							field : 'a_option',
+							title : '账号操作',
+							width : 100,
+							formatter : function(value, row, index) {
+								if (row.a_state == 1) {
+									return '<a href="javascript:updateState('
+											+ row.a_id + ')">禁用</a>';
+								} else {
+									return '<a href="javascript:updateState('
+											+ row.a_id + ')">可用</a>';
+								}
+							}
+						} ] ]
+			});
+	function updateState(aid) {
+		$.get("admin.action",{op:'update',a_id:aid},function(data){
+			if(data==1){
+				$.messager.show({
+					title:'温馨提示',
+					msg:'修改成功',
+					timeout:4000,
+					showType:'slide'
+				});
+				$('#show_admin').datagrid('reload');
+			}else {
+				$.messager.alert('错误提示','修改失败');
+			}
+		});
+	}
+</script>

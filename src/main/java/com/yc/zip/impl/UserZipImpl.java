@@ -29,7 +29,7 @@ public class UserZipImpl implements UserZip {
      */
     @Override
     public int add(String uname, String utel, String upwd, String uidcard) {
-        System.out.println(utel + "-----" + upwd);
+        System.out.println(utel + "-----" + upwd+"----"+uname+"---"+uidcard);
         if (uname == null || uidcard == null) {
             return -1;
         }
